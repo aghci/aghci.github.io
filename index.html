@@ -117,6 +117,9 @@
       manifestUrl: 'https://aghci.github.io/tonconnect-manifest.json',
       buttonRootId: "root"
     });
+    oTonConnectUI.onModalStateChange( onChange => {
+        console.log( onChange );
+    } );
     async function openTonConnectUI() {
       await oTonConnectUI.openModal();
     }
