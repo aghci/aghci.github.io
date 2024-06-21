@@ -113,11 +113,11 @@
   </script>
 
   <script>
+    const oTonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+      manifestUrl: 'https://aghci.github.io/tonconnect-manifest.json',
+      buttonRootId: "root"
+    });
     async function openTonConnectUI() {
-      const oTonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-        manifestUrl: 'https://aghci.github.io/tonconnect-manifest.json',
-        buttonRootId: "root"
-      });
       await oTonConnectUI.openModal();
       oTonConnectUI.closeModal();
     }
