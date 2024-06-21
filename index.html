@@ -9,8 +9,9 @@
   <link rel="stylesheet" href="TemplateData/style.css">
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script type="module" crossorigin src="/assets/index-Csux_9X-.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-DiwrgTda.css">
+  <!-- <script type="module" crossorigin src="/assets/index-Csux_9X-.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DiwrgTda.css"> -->
+  <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
 </head>
 
 <body>
@@ -109,6 +110,16 @@
 
     document.body.appendChild(script);
 
+  </script>
+
+  <script>
+    async function openTonConnectUI() {
+      const oTonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+        manifestUrl: 'https://aghci.github.io/tonconnect-manifest.json',
+        buttonRootId: "root"
+      });
+      await oTonConnectUI.openModal();
+    }
   </script>
 </body>
 
