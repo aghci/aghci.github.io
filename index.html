@@ -25,16 +25,16 @@
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/d39537b117727b31cbfe7f02ce047840.data",
-        frameworkUrl: "Build/f8a5976fd609285ef60f0a8b342bcb7b.framework.js",
-        codeUrl: "Build/c0f6bfeca0112c82bfc566cd3b96eb59.wasm",
+        dataUrl: "Build/fa1254c85fb6c8f03cc9d1ec7da6c68e.data",
+        frameworkUrl: "Build/0f013ea6a5abe074b678fd4eafea21f7.framework.js",
+        codeUrl: "Build/e82898f872bd51af5fee1fb4ed6c60e4.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Ton",
         productVersion: "1.0",
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-      });
+      }).then(o=>window.unity = o);
     </script>
   </body>
 </html>
