@@ -7,7 +7,7 @@
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
     <canvas id="unity-canvas" width=1080 height=1920 tabindex="-1" style="width: 1080px; height: 1920px; background: #231F20"></canvas>
-    <script src="Build/bb0d9ecdb05db3e84da20bd14a4f84dc.loader.js"></script>
+    <script src="Build/ea68ce3f981fe582314c45996aa86ba4.loader.js"></script>
     <script>
       // Mobile device style: fill the whole browser client area with the game canvas:
       var meta = document.createElement('meta');
@@ -20,12 +20,13 @@
       canvas.style.height = "100%";
       canvas.style.position = "fixed";
   
-      document.body.style.textAlign = "left";
-  
+      document.body.style.textAlign = "left";  
+
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/f189959546bcdc425392444d099ee9ac.data",
-        frameworkUrl: "Build/64b2f573156a325096f1440c5a8d39dc.framework.js",
-        codeUrl: "Build/fdbe471980d945b9031dfc186c89dc9a.wasm",
+        dataUrl: "Build/003be07c5f4cfb52e3f4a881e09ccc21.data",
+        frameworkUrl: "Build/9ab0e86bc4b7428f3cb2bf19a761e726.framework.js",
+        codeUrl: "Build/abf6257c07abbf330057288fcaf363ac.wasm",
+        symbolsUrl: "Build/b12f79fe0f465ede0fd0413cd1900551.symbols.json",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Ton",
