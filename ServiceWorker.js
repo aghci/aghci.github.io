@@ -1,9 +1,9 @@
 const cacheName = "DefaultCompany-Ton-1.0";
 const contentToCache = [
     "Build/bb0d9ecdb05db3e84da20bd14a4f84dc.loader.js",
-    "Build/2faf78cd3e6b08204fb32249e434f9d7.framework.js",
-    "Build/1bfaa5e6583231a6f03b10f547f5d4ea.data",
-    "Build/a216d6b925cc9c78146819fff7bff4f8.wasm",
+    "Build/6fb93280839e5e82ebd9884dcfbd47c2.framework.js",
+    "Build/28954ca8b481bad00f9eb12c76cc16b2.data",
+    "Build/d7da1ecb64bf2fa37f2e05c285068877.wasm",
     "TemplateData/style.css"
 
 ];
