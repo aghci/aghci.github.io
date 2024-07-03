@@ -15500,7 +15500,6 @@ var ASM_CONSTS = {
           let sOnly = UTF8ToString( iOnly );
           let oObject;
           try {
-              window.integration_telegram.version( "6.2+" );
               window.Telegram.WebApp.disableClosingConfirmation();
               oObject = {
                   Only: sOnly,
@@ -15521,7 +15520,6 @@ var ASM_CONSTS = {
           let sOnly = UTF8ToString( iOnly );
           let oObject;
           try {
-              window.integration_telegram.version( "6.2+" );
               window.Telegram.WebApp.enableClosingConfirmation();
           } catch ( error ) {
               oObject = {
@@ -15584,7 +15582,6 @@ var ASM_CONSTS = {
                   Value: "Tonconnect has been initial"
               } ) );
           } else {
-  
               window.integration_telegram = {
                   name: sName,
                   method: sMethod,
