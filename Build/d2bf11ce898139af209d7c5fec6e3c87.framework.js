@@ -15592,9 +15592,9 @@ var ASM_CONSTS = {
                   method: sMethod,
                   version: function ( sVersion ) {
                       if ( Telegram.WebApp.isVersionAtLeast( sVersion ) ) {
-                          throw new Error( "To complete this action, please update your Telegram application to the latest version." );
+                          console.debug( `${ sVersion } -> ${ Telegram.WebApp.version }` );
                       } else {
-                          console.debug( sVersion );
+                          throw new Error( "To complete this action, please update your Telegram application to the latest version." );
                       }
                   },
               };
