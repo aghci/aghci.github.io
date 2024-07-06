@@ -106,6 +106,7 @@
 
 
     <script>
+        let oEvent = null;
         let clipboard1 = (oElement, sValue) => new Promise((resolve, reject) => {
             let oButtonElement = document.createElement("button");
             oButtonElement.id = "clipboard_copy";
@@ -135,19 +136,7 @@
                 oElement.removeChild(oTextareaElement);
                 resolve();
             });
-
-            // 获取按钮的位置
-            let oDomRect = oButtonElement.getBoundingClientRect();
-            let iClientX = oDomRect.left + (oDomRect.width / 2);
-            let iClientY = oDomRect.top + (oDomRect.height / 2);
-
-            oButtonElement.dispatchEvent(new MouseEvent('click', {
-                view: window,
-                bubbles: true,
-                cancelable: true,
-                clientX: iClientX,
-                clientY: iClientY
-            }));
+            oButtonElement.dispatchEvent(oEvent);
         });
 
         let clipboard2 = (oElement, sValue) => new Promise((resolve, reject) => {
@@ -241,18 +230,7 @@
                 oElement.removeChild(oTextareaElement);
                 resolve();
             });
-            // 获取按钮的位置
-            let oDomRect = oButtonElement.getBoundingClientRect();
-            let iClientX = oDomRect.left + (oDomRect.width / 2);
-            let iClientY = oDomRect.top + (oDomRect.height / 2);
-
-            oButtonElement.dispatchEvent(new MouseEvent('click', {
-                view: window,
-                bubbles: true,
-                cancelable: true,
-                clientX: iClientX,
-                clientY: iClientY
-            }));
+            oButtonElement.dispatchEvent(oEvent);
         });
         let onSystemClipboard = async function (sOnly, sValue) {
             let oObject;
@@ -332,8 +310,11 @@
         };
 
         window.addEventListener("load", function () {
-            setTimeout(async () => await onSystemClipboard("sOnly", "6789"), 5 * 1000);
-            document.querySelector("#container").addEventListener("click", async () => await onSystemClipboard("sOnly", "678900000000000000000000"));
+            document.querySelector("#container").addEventListener("click", async (e) => {
+                oEvent = e;
+                // await onSystemClipboard("sOnly", "678900000000000000000000");
+                setTimeout(async () => await onSystemClipboard("sOnly", "6789"), 5 * 1000);
+            });
         });
     </script>
 </body>
