@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
-<head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Ton</title>
-    <!-- <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <link rel="manifest" href="manifest.webmanifest"> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
-</head>
-
-<body>
-    <div id="container" style="position: absolute; width: 100%; height: 50%; background-color: aqua;">container</div>
-    <!-- <div id="unity-container">
+    <link rel="manifest" href="manifest.webmanifest">
+  </head>
+  <body>
+    <div id="unity-container">
       <canvas id="unity-canvas" width=1080 height=1920 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
@@ -63,8 +59,8 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/0145c752a950e797e3f5c26444736e72.loader.js";
       var config = {
-        dataUrl: buildUrl + "/882b241892be0aeedaf1b364a673c16f.data",
-        frameworkUrl: buildUrl + "/9c66af4ceacfba70bec9f2b803812445.framework.js",
+        dataUrl: buildUrl + "/64477ee1682aaca66feb7f2332c4bacc.data",
+        frameworkUrl: buildUrl + "/6ab61652e3fbd438b494b03af5d1a7c5.framework.js",
         codeUrl: buildUrl + "/7bee90e373aea4c3ef369a71b29c57f0.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
@@ -102,67 +98,6 @@
         });
       };
       document.body.appendChild(script);
-    </script> -->
-
-
-    <script>
-        let aCalback = new Array();
-        let aClick = new Array();
-        let oBodyElement = document.querySelector("body");
-        let oButtonElement = document.createElement("button");
-        oButtonElement.id = "clipboard_copy";
-        oButtonElement.style.width = "100%";
-        oButtonElement.style.right = "100%";
-        oButtonElement.setAttribute("data-clipboard-action", "copy");
-        oButtonElement.setAttribute("data-clipboard-target", "#bar_copy");
-        oButtonElement.textContent = "Copy to clipboard";
-        let oTextareaElement = document.createElement('textarea');
-        oTextareaElement.id = "bar_copy";
-        oTextareaElement.style.width = "100%";
-        oTextareaElement.style.right = "100%";
-        oBodyElement.appendChild(oTextareaElement);
-        oBodyElement.appendChild(oButtonElement);
-        let oClipboardJS = new ClipboardJS("#clipboard_copy");
-        oClipboardJS.on('success', () => {
-            aCalback.forEach(t => t.apply(window, [true]));
-            aCalback.length = 0;
-        });
-        oClipboardJS.on('error', () => {
-            aCalback.forEach(t => t.apply(window, [false]));
-            aCalback.length = 0;
-        });
-
-        let clipboard = (sValue) => new Promise((resolve, reject) => {
-            oTextareaElement.value = sValue;
-            aCalback.push((isStatus) => {
-                if (isStatus) {
-                    resolve();
-                } else {
-                    reject();
-                }
-            });
-        });
-
-        let isStatus;
-        document.querySelector("#container").addEventListener("click", async function () {
-            aClick.push(() => oButtonElement.dispatchEvent(new MouseEvent('click', {
-                view: window,
-                bubbles: true,
-                cancelable: true
-            })));
-            try {
-                await clipboard("5668799");
-                alert("成功");
-            } catch (error) {
-                alert("失败");
-            }
-        }, true);
-
-        window.addEventListener("click", () => {
-            aClick.forEach(t => t.apply(window, null));
-            aClick.length = 0;
-        }, false);
     </script>
-</body>
-
+  </body>
 </html>
