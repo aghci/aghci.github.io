@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Ton</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <!-- <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <link rel="manifest" href="manifest.webmanifest">
-  </head>
-  <body>
-    <div id="unity-container">
+    <link rel="manifest" href="manifest.webmanifest"> -->
+</head>
+
+<body>
+    <!-- <div id="unity-container">
       <canvas id="unity-canvas" width=1080 height=1920 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
@@ -98,6 +100,241 @@
         });
       };
       document.body.appendChild(script);
+    </script> -->
+
+
+    <script>
+        let clipboard1 = (oElement, sValue) => new Promise((resolve, reject) => {
+            let oButtonElement = document.createElement("button");
+            oButtonElement.id = "clipboard_copy";
+            oButtonElement.style.width = "100%";
+            oButtonElement.style.right = "100%";
+            oButtonElement.setAttribute("data-clipboard-action", "copy");
+            oButtonElement.setAttribute("data-clipboard-target", "#bar_copy");
+            oButtonElement.textContent = "Copy to clipboard";
+            let oTextareaElement = document.createElement('textarea');
+            oTextareaElement.id = "bar_copy";
+            oTextareaElement.value = sValue;
+            oTextareaElement.style.width = "100%";
+            oTextareaElement.style.right = "100%";
+            oElement.appendChild(oTextareaElement);
+            oElement.appendChild(oButtonElement);
+            let oClipboardJS = new ClipboardJS("#clipboard_copy");
+            oClipboardJS.on('success', (e) => {
+                e.clearSelection();
+                oClipboardJS.destroy();
+                oElement.removeChild(oButtonElement);
+                oElement.removeChild(oTextareaElement);
+                reject();
+            });
+            oClipboardJS.on('error', () => {
+                oClipboardJS.destroy();
+                oElement.removeChild(oButtonElement);
+                oElement.removeChild(oTextareaElement);
+                resolve();
+            });
+
+            // 获取按钮的位置
+            let oDomRect = oButtonElement.getBoundingClientRect();
+            let iClientX = oDomRect.left + (oDomRect.width / 2);
+            let iClientY = oDomRect.top + (oDomRect.height / 2);
+
+            oButtonElement.dispatchEvent(new MouseEvent('click', {
+                view: window,
+                bubbles: true,
+                cancelable: true,
+                clientX: iClientX,
+                clientY: iClientY
+            }));
+        });
+
+        let clipboard2 = (oElement, sValue) => new Promise((resolve, reject) => {
+            let oTextareaElement = document.createElement('textarea');
+            oTextareaElement.value = sValue;
+            oTextareaElement.style.width = "100%";
+            oTextareaElement.style.right = "100%";
+            oElement.appendChild(oTextareaElement);
+            oTextareaElement.focus();
+            oTextareaElement.select();
+            if (document.execCommand('copy')) {
+                reject();
+            } else {
+                resolve();
+            }
+            oElement.removeChild(oTextareaElement);
+        });
+
+        let clipboard3 = (oElement, sValue) => new Promise((resolve, reject) => {
+            let oSpanElement = document.createElement('span');
+            oSpanElement.textContent = sValue;
+            oSpanElement.style.width = "100%";
+            oSpanElement.style.right = "100%";
+            oElement.appendChild(oSpanElement);
+            let oRange = document.createRange();
+            oRange.selectNode(oSpanElement);
+            let oSelection = window.getSelection();
+            oSelection.removeAllRanges();
+            oSelection.addRange(oRange);
+            let isStatus = document.execCommand('copy');
+            oSelection.removeAllRanges();
+            if (isStatus) {
+                reject();
+            } else {
+                resolve();
+            }
+            oElement.removeChild(oSpanElement);
+        });
+
+        let clipboard4 = (oElement, sValue) => new Promise((resolve, reject) => {
+            let oTextareaElement = document.createElement('textarea');
+            oTextareaElement.value = sValue;
+            oTextareaElement.style.width = "100%";
+            oTextareaElement.style.right = "100%";
+            oElement.appendChild(oTextareaElement);
+            oTextareaElement.focus();
+            oTextareaElement.select();
+            if (document.execCommand('copy')) {
+                reject();
+            } else {
+                resolve();
+            }
+            oElement.removeChild(oTextareaElement);
+        });
+
+        let clipboard5 = (sValue) => new Promise(async (resolve, reject) => {
+            try {
+                await navigator.clipboard.writeText(sValue);
+                reject();
+            } catch {
+                resolve();
+            }
+        });
+
+        let clipboard6 = (oElement, sValue) => new Promise((resolve, reject) => {
+            let oButtonElement = document.createElement("button");
+            oButtonElement.id = "clipboard_cut";
+            oButtonElement.style.width = "100%";
+            oButtonElement.style.right = "100%";
+            oButtonElement.setAttribute("data-clipboard-action", "cut");
+            oButtonElement.setAttribute("data-clipboard-target", "#bar_cut");
+            oButtonElement.textContent = "Cut to clipboard";
+            let oTextareaElement = document.createElement('textarea');
+            oTextareaElement.id = "bar_cut";
+            oTextareaElement.value = sValue;
+            oTextareaElement.style.width = "100%";
+            oTextareaElement.style.right = "100%";
+            oElement.appendChild(oTextareaElement);
+            oElement.appendChild(oButtonElement);
+            let oClipboardJS = new ClipboardJS("#clipboard_cut");
+            oClipboardJS.on('success', (e) => {
+                e.clearSelection();
+                oClipboardJS.destroy();
+                oElement.removeChild(oButtonElement);
+                oElement.removeChild(oTextareaElement);
+                reject();
+            });
+            oClipboardJS.on('error', () => {
+                oClipboardJS.destroy();
+                oElement.removeChild(oButtonElement);
+                oElement.removeChild(oTextareaElement);
+                resolve();
+            });
+            // 获取按钮的位置
+            let oDomRect = oButtonElement.getBoundingClientRect();
+            let iClientX = oDomRect.left + (oDomRect.width / 2);
+            let iClientY = oDomRect.top + (oDomRect.height / 2);
+
+            oButtonElement.dispatchEvent(new MouseEvent('click', {
+                view: window,
+                bubbles: true,
+                cancelable: true,
+                clientX: iClientX,
+                clientY: iClientY
+            }));
+        });
+        let onSystemClipboard = async function (sValue) {
+            let oObject;
+            let oBodyElement = document.querySelector("body");
+            let oDivElement = document.createElement("div");
+            oDivElement.style.zIndex = 90000;
+            oDivElement.style.webkitUserSelect = "auto";
+            oDivElement.style.userSelect = "auto";
+            oDivElement.style.position = "absolute";
+            oDivElement.style.top = "0px";
+            oDivElement.style.left = "0px";
+            oDivElement.style.bottom = "0px";
+            oDivElement.style.right = "0px";
+            oBodyElement.appendChild(oDivElement);
+            try {
+                if (sValue == "") {
+                    throw new Error("copy failed");
+                } else {
+                    let oArray = new Array();
+                    oArray.push({
+                        invoke: window.integration_system.clipboard5,
+                        param: [sValue],
+                        object: window,
+                    });
+                    oArray.push({
+                        invoke: window.integration_system.clipboard4,
+                        param: [oDivElement, sValue],
+                        object: window,
+                    });
+                    oArray.push({
+                        invoke: window.integration_system.clipboard1,
+                        param: [oDivElement, sValue],
+                        object: window,
+                    });
+                    oArray.push({
+                        invoke: window.integration_system.clipboard3,
+                        param: [oDivElement, sValue],
+                        object: window,
+                    });
+                    oArray.push({
+                        invoke: window.integration_system.clipboard2,
+                        param: [oDivElement, sValue],
+                        object: window,
+                    });
+                    oArray.push({
+                        invoke: window.integration_system.clipboard6,
+                        param: [oDivElement, sValue],
+                        object: window,
+                    });
+                    do {
+                        if (oArray.length > 0) {
+                            let oItem = oArray.pop();
+                            try {
+                                await oItem.invoke.apply(oItem.object, oItem.param);
+                            } catch {
+                                oArray = null;
+                            }
+                        } else {
+                            throw new Error("copy failed");
+                        }
+                    } while (oArray);
+                    oObject = {
+                        Only: sOnly,
+                        Type: "Success",
+                        Value: ""
+                    }
+                }
+            } catch (error) {
+                oObject = {
+                    Only: sOnly,
+                    Type: "Failure",
+                    Value: typeof error == "string" ? error : error instanceof Error ? error.message : JSON.stringify(error)
+                };
+            }
+            oBodyElement.removeChild(oDivElement);
+            alert(JSON.stringify(oObject));
+        };
+
+        window.addEventListener("load", function () {
+            setTimeout(async () => {
+                await onSystemClipboard("6789");
+            }, 5 * 1000);
+        });
     </script>
-  </body>
+</body>
+
 </html>
