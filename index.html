@@ -151,15 +151,11 @@
             }
         }, true);
 
-        window.addEventListener("click", () => {
-            oButtonElement.dispatchEvent(new MouseEvent('click', {
-                view: window,
-                bubbles: true,
-                cancelable: true,
-                clientX: iClientX,
-                clientY: iClientY
-            }));
-        }, false);
+        window.addEventListener("click", () => oButtonElement.dispatchEvent(new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true
+        })), false);
     </script>
 </body>
 
