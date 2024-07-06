@@ -106,7 +106,7 @@
 
 
     <script>
-        let oEvent = null;
+
         let clipboard1 = (oElement, sValue) => new Promise((resolve, reject) => {
             let oButtonElement = document.createElement("button");
             oButtonElement.id = "clipboard_copy";
@@ -309,18 +309,27 @@
             alert(JSON.stringify(oObject));
         };
 
+        let oResolve;
+        let oReject;
+        let isStatus;
         window.addEventListener("load", function () {
             document.querySelector("#container").addEventListener("click", async (e) => {
-                alert(456);
-                oEvent = e;
-                // await onSystemClipboard("sOnly", "678900000000000000000000");
-                setTimeout(async () => await onSystemClipboard("sOnly", "6789"), 5 * 1000);
+                isStatus = true;
+                setTimeout(() => oResolve(), 5 * 1000);
             });
         });
 
-        window.addEventListener("click", function () {
-            alert(123);
+        window.addEventListener("click", async function () {
+            await new Promise((resolve, reject) => {
+                oResolve = resolve;
+                oReject = reject;
+            });
+            await onSystemClipboard("sOnly", "6789");
         }, true);
+
+        window.addEventListener("click", async function () {
+            isStatus || oReject();
+        }, false);
     </script>
 </body>
 
