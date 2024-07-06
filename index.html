@@ -252,7 +252,7 @@
                 clientY: iClientY
             }));
         });
-        let onSystemClipboard = async function (sValue) {
+        let onSystemClipboard = async function (sOnly, sValue) {
             let oObject;
             let oBodyElement = document.querySelector("body");
             let oDivElement = document.createElement("div");
@@ -331,7 +331,7 @@
 
         window.addEventListener("load", function () {
             setTimeout(async () => {
-                await onSystemClipboard("6789");
+                await onSystemClipboard("sOnly", "6789");
             }, 5 * 1000);
         });
     </script>
