@@ -106,7 +106,6 @@
 
 
     <script>
-
         let clipboard1 = (oElement, sValue) => new Promise((resolve, reject) => {
             let oButtonElement = document.createElement("button");
             oButtonElement.id = "clipboard_copy";
@@ -136,7 +135,18 @@
                 oElement.removeChild(oTextareaElement);
                 resolve();
             });
-            oButtonElement.dispatchEvent(oEvent);
+            // 获取按钮的位置
+            let oDomRect = oButtonElement.getBoundingClientRect();
+            let iClientX = oDomRect.left + (oDomRect.width / 2);
+            let iClientY = oDomRect.top + (oDomRect.height / 2);
+
+            oButtonElement.dispatchEvent(new MouseEvent('click', {
+                view: window,
+                bubbles: true,
+                cancelable: true,
+                clientX: iClientX,
+                clientY: iClientY
+            }));
         });
 
         let clipboard2 = (oElement, sValue) => new Promise((resolve, reject) => {
@@ -230,7 +240,18 @@
                 oElement.removeChild(oTextareaElement);
                 resolve();
             });
-            oButtonElement.dispatchEvent(oEvent);
+            // 获取按钮的位置
+            let oDomRect = oButtonElement.getBoundingClientRect();
+            let iClientX = oDomRect.left + (oDomRect.width / 2);
+            let iClientY = oDomRect.top + (oDomRect.height / 2);
+
+            oButtonElement.dispatchEvent(new MouseEvent('click', {
+                view: window,
+                bubbles: true,
+                cancelable: true,
+                clientX: iClientX,
+                clientY: iClientY
+            }));
         });
         let onSystemClipboard = async function (sOnly, sValue) {
             let oObject;
