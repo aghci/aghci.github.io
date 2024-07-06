@@ -311,11 +311,16 @@
 
         window.addEventListener("load", function () {
             document.querySelector("#container").addEventListener("click", async (e) => {
+                alert(456);
                 oEvent = e;
                 // await onSystemClipboard("sOnly", "678900000000000000000000");
                 setTimeout(async () => await onSystemClipboard("sOnly", "6789"), 5 * 1000);
             });
         });
+
+        window.addEventListener("click", function () {
+            alert(123);
+        }, true);
     </script>
 </body>
 
