@@ -152,14 +152,13 @@
             } catch (error) {
                 alert("失败");
             }
-            isStatus = false;
         }, true);
 
-        window.addEventListener("click", () => isStatus && oButtonElement.dispatchEvent(new MouseEvent('click', {
+        window.addEventListener("click", () => isStatus && (oButtonElement.dispatchEvent(new MouseEvent('click', {
             view: window,
             bubbles: true,
             cancelable: true
-        })), false);
+        })), (isStatus = false)), false);
     </script>
 </body>
 
