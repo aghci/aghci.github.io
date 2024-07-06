@@ -107,6 +107,7 @@
 
     <script>
         let aCalback = new Array();
+        let aClick = new Array();
         let oBodyElement = document.querySelector("body");
         let oButtonElement = document.createElement("button");
         oButtonElement.id = "clipboard_copy";
@@ -145,7 +146,11 @@
         let isStatus;
 
         window.addEventListener("click", async function () {
-            isStatus = true;
+            aClick.push(() => oButtonElement.dispatchEvent(new MouseEvent('click', {
+                view: window,
+                bubbles: true,
+                cancelable: true
+            })));
             try {
                 await clipboard("5668799");
                 alert("成功");
@@ -154,11 +159,10 @@
             }
         }, true);
 
-        window.addEventListener("click", () => isStatus && (oButtonElement.dispatchEvent(new MouseEvent('click', {
-            view: window,
-            bubbles: true,
-            cancelable: true
-        })), (isStatus = false)), false);
+        window.addEventListener("click", () => {
+            aClick.forEach(t => t.apply(window, null));
+            aClick.length = 0;
+        }, false);
     </script>
 </body>
 
