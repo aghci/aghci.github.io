@@ -6,7 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Catizen</title>
     <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="full-screen" content="true">
     <meta name="x5-fullscreen" content="true">
@@ -132,6 +133,32 @@
         <div class="item">99</div>
         <div class="item">100</div>
     </div>
+    <script>
+        window.addEventListener("touchstart", t => {
+            t.stopPropagation();
+            t.preventDefault();
+            return false;
+        }, {
+            capture: true,
+            passive: false
+        });
+        window.addEventListener("touchmove", t => {
+            t.stopPropagation();
+            t.preventDefault();
+            return false;
+        }, {
+            capture: true,
+            passive: false
+        });
+        window.addEventListener("touchend", t => {
+            t.stopPropagation();
+            t.preventDefault();
+            return false;
+        }, {
+            capture: true,
+            passive: false
+        });
+    </script>
     <!-- <div id="unity-container">
       <canvas id="unity-canvas" width=1080 height=1920 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
