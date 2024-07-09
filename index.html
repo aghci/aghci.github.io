@@ -149,31 +149,77 @@
         <div class="item">100</div>
     </div>
     <script>
-        window.addEventListener("touchstart", t => {
-            t.stopPropagation();
-            t.preventDefault();
-            return true;
-        }, {
-            capture: true,
-            passive: false
-        });
-        window.addEventListener("touchmove", t => {
-            t.stopPropagation();
-            t.preventDefault();
-            return true;
-        }, {
-            capture: true,
-            passive: false
-        });
-        window.addEventListener("touchend", t => {
-            t.stopPropagation();
-            t.preventDefault();
-            let oDivElement = document.querySelector(".list");
-            oDivElement.scroll(0, oDivElement.scrollHeight);
-            return true;
-        }, {
-            capture: true,
-            passive: false
+        // window.addEventListener("touchstart", t => {
+        //     t.stopPropagation();
+        //     t.preventDefault();
+        //     return true;
+        // }, {
+        //     capture: true,
+        //     passive: false
+        // });
+        // window.addEventListener("touchmove", t => {
+        //     t.stopPropagation();
+        //     t.preventDefault();
+        //     return true;
+        // }, {
+        //     capture: true,
+        //     passive: false
+        // });
+        // window.addEventListener("touchend", t => {
+        //     t.stopPropagation();
+        //     t.preventDefault();
+        //     let oDivElement = document.querySelector(".list");
+        //     oDivElement.scroll(0, oDivElement.scrollHeight);
+        //     return true;
+        // }, {
+        //     capture: true,
+        //     passive: false
+        // });
+        function simulateTouchEventsUpward() {
+            const touchStartEvent = new TouchEvent('touchstart', {
+                bubbles: true,
+                cancelable: true,
+                view: window,
+                touches: [new Touch({
+                    identifier: 1,
+                    target: document,
+                    clientX: 50,
+                    clientY: 200
+                })]
+            });
+
+            document.dispatchEvent(touchStartEvent);
+
+            const touchMoveEvent = new TouchEvent('touchmove', {
+                bubbles: true,
+                cancelable: true,
+                view: window,
+                touches: [new Touch({
+                    identifier: 1,
+                    target: document,
+                    clientX: 50,
+                    clientY: 100
+                })]
+            });
+
+            document.dispatchEvent(touchMoveEvent);
+
+            const touchEndEvent = new TouchEvent('touchend', {
+                bubbles: true,
+                cancelable: true,
+                view: window,
+                touches: []
+            });
+
+            document.dispatchEvent(touchEndEvent);
+        }
+
+        let oDivElement = document.querySelector(".list");
+        oDivElement.addEventListener("click", t => {
+            Telegram.WebApp.expand();
+            setTimeout(() => {
+                simulateTouchEventsUpward();
+            }, 1000);
         });
     </script>
     <!-- <div id="unity-container">
