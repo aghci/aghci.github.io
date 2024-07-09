@@ -24,11 +24,14 @@
         body {
             width: 100%;
             height: 500%;
+            overflow-x: hidden;
             overflow-y: auto;
+            padding: 0;
+            margin: 0;
         }
 
         .game {
-            position: absolute;
+            position: fixed;
             top: 0;
             right: 0;
             left: 0;
@@ -47,9 +50,7 @@
         oBodyElement.scroll(0, oBodyElement.scrollHeight);
         oBodyElement.addEventListener("scroll", t => {
             t.preventDefault();
-            if (oBodyElement.scrollTop < 100) {
-                oBodyElement.scroll(0, oBodyElement.scrollHeight);
-            }
+            oBodyElement.scroll(0, oBodyElement.scrollHeight);
         }, {
             passive: false
         });
