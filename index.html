@@ -47,10 +47,10 @@
     <div class="game"></div>
     <script>
         let oBodyElement = document.querySelector("body");
-        oBodyElement.scroll(0, oBodyElement.scrollHeight);
+        (document.documentElement.scrollTop || oBodyElement).scroll(0, oBodyElement.scrollHeight);
         oBodyElement.addEventListener("scroll", t => {
             t.preventDefault();
-            oBodyElement.scroll(0, oBodyElement.scrollHeight);
+            window.scrollTo(0, document.documentElement.scrollHeight || document.body.scrollHeight);
         }, {
             passive: false
         });
