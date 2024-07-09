@@ -42,6 +42,17 @@
             background-color: blue;
             text-align: center;
         }
+
+        .game {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            z-index: 100;
+            background-color: rgba(red, green, blue, 51);
+            overflow: hidden;
+        }
     </style>
 </head>
 
@@ -148,79 +159,11 @@
         <div class="item">99</div>
         <div class="item">100</div>
     </div>
+    <div class="game"></div>
     <script>
-        // window.addEventListener("touchstart", t => {
-        //     t.stopPropagation();
-        //     t.preventDefault();
-        //     return true;
-        // }, {
-        //     capture: true,
-        //     passive: false
-        // });
-        // window.addEventListener("touchmove", t => {
-        //     t.stopPropagation();
-        //     t.preventDefault();
-        //     return true;
-        // }, {
-        //     capture: true,
-        //     passive: false
-        // });
-        // window.addEventListener("touchend", t => {
-        //     t.stopPropagation();
-        //     t.preventDefault();
-        //     let oDivElement = document.querySelector(".list");
-        //     oDivElement.scroll(0, oDivElement.scrollHeight);
-        //     return true;
-        // }, {
-        //     capture: true,
-        //     passive: false
-        // });
-        function simulateTouchEventsUpward() {
-            const touchStartEvent = new TouchEvent('touchstart', {
-                bubbles: true,
-                cancelable: true,
-                view: window,
-                touches: [new Touch({
-                    identifier: 1,
-                    target: document,
-                    clientX: 50,
-                    clientY: 500
-                })]
-            });
-
-            document.dispatchEvent(touchStartEvent);
-
-            const touchMoveEvent = new TouchEvent('touchmove', {
-                bubbles: true,
-                cancelable: true,
-                view: window,
-                touches: [new Touch({
-                    identifier: 1,
-                    target: document,
-                    clientX: 50,
-                    clientY: 10
-                })]
-            });
-
-            document.dispatchEvent(touchMoveEvent);
-
-            const touchEndEvent = new TouchEvent('touchend', {
-                bubbles: true,
-                cancelable: true,
-                view: window,
-                touches: []
-            });
-
-            document.dispatchEvent(touchEndEvent);
-        }
-
         let oDivElement = document.querySelector(".list");
-        oDivElement.addEventListener("click", t => {
-            Telegram.WebApp.expand();
-            setTimeout(() => {
-                simulateTouchEventsUpward();
-            }, 1000);
-        });
+        oDivElement.scroll(0, oDivElement.scrollHeight);
+        oDivElement.addEventListener("scroll", t => oDivElement.scroll(0, oDivElement.scrollHeight));
     </script>
     <!-- <div id="unity-container">
       <canvas id="unity-canvas" width=1080 height=1920 tabindex="-1"></canvas>
