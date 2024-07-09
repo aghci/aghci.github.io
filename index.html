@@ -47,7 +47,7 @@
     <div class="game"></div>
     <script>
         let oBodyElement = document.querySelector("body");
-        (document.documentElement.scrollTop || oBodyElement).scroll(0, oBodyElement.scrollHeight);
+        window.scrollTo(0, document.documentElement.scrollHeight || document.body.scrollHeight);
         oBodyElement.addEventListener("scroll", t => {
             t.preventDefault();
             window.scrollTo(0, document.documentElement.scrollHeight || document.body.scrollHeight);
