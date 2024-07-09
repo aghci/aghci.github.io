@@ -164,9 +164,12 @@
         let oDivElement = document.querySelector(".list");
         oDivElement.scroll(0, oDivElement.scrollHeight);
         oDivElement.addEventListener("scroll", t => {
+            t.preventDefault();
             if (oDivElement.scrollTop < 100) {
                 oDivElement.scroll(0, oDivElement.scrollHeight);
             }
+        }, {
+            passive: false
         });
     </script>
     <!-- <div id="unity-container">
