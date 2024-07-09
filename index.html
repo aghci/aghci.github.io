@@ -163,7 +163,11 @@
     <script>
         let oDivElement = document.querySelector(".list");
         oDivElement.scroll(0, oDivElement.scrollHeight);
-        oDivElement.addEventListener("scroll", t => oDivElement.scroll(0, oDivElement.scrollHeight));
+        oDivElement.addEventListener("scroll", t => {
+            if (oDivElement.scrollTop < 100) {
+                oDivElement.scroll(0, oDivElement.scrollHeight);
+            }
+        });
     </script>
     <!-- <div id="unity-container">
       <canvas id="unity-canvas" width=1080 height=1920 tabindex="-1"></canvas>
