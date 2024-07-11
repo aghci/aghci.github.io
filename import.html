@@ -1,5 +1,5 @@
 <title>miniapp</title>
 <script>
-    alert(`${location.protocol}//${location.host}/index.html${location.search}${location.search ? "?" : "&"}updatetime=${Date.now()}${location.hash}`);
-    location.replace(`${location.protocol}//${location.host}/index.html${location.search}${location.search ? "?" : "&"}updatetime=${Date.now()}${location.hash}`);
+    alert(`${location.protocol}//${location.host}/index.html${location.search}${location.search === "" ? "?" : "&"}updatetime=${Date.now()}${location.hash}`);
+    location.replace(`${location.protocol}//${location.host}/index.html${location.search}${location.search === "" ? "?" : "&"}updatetime=${Date.now()}${location.hash}`);
 </script>
