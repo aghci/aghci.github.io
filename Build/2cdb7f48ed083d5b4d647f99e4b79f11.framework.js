@@ -16506,7 +16506,7 @@ var ASM_CONSTS = {
                                       oRegex1 = /^\/\//;
                                       oRegex2 = /^\//;
                                       oRegex3 = /^http/;
-                                      oRegex4 = /^(.+)\/.*$/;
+                                      oRegex4 = /^(.{0,})?\/.*$/;
                                       this._tonConnectUI = new this._TON_CONNECT_UI.TonConnectUI({
                                           manifestUrl: oRegex1.test(sManifest) ? "".concat(location.protocol).concat(sManifest) : oRegex2.test(sManifest) ? "".concat(location.protocol, "//").concat(location.host).concat(sManifest) : oRegex3.test(sManifest) ? sManifest : "".concat(location.protocol, "//").concat(location.host).concat(location.pathname.replace(oRegex4, "$1"), "/").concat(sManifest),
                                           actionsConfiguration: { twaReturnUrl: "".concat(this._url, "?startapp=address") }
